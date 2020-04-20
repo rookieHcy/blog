@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>axios的使用 | I Love Zsn</title>
+    <meta name="description" content="Later equals never. ">
+    <meta name="generator" content="VuePress 1.4.0">
+    <link rel="icon" href="/favicon.ico">
+  <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no">
+    
+    <link rel="preload" href="/assets/css/0.styles.82ef3fbf.css" as="style"><link rel="preload" href="/assets/js/app.f459944a.js" as="script"><link rel="preload" href="/assets/js/3.8bbe5d20.js" as="script"><link rel="preload" href="/assets/js/1.db0d4554.js" as="script"><link rel="preload" href="/assets/js/24.9c78b38e.js" as="script"><link rel="prefetch" href="/assets/js/10.03bf1e33.js"><link rel="prefetch" href="/assets/js/11.50452381.js"><link rel="prefetch" href="/assets/js/12.c480956a.js"><link rel="prefetch" href="/assets/js/13.773f4696.js"><link rel="prefetch" href="/assets/js/14.fc677dee.js"><link rel="prefetch" href="/assets/js/15.c2ce2ea1.js"><link rel="prefetch" href="/assets/js/16.0f9e62f3.js"><link rel="prefetch" href="/assets/js/17.f2be8cce.js"><link rel="prefetch" href="/assets/js/18.c4302e12.js"><link rel="prefetch" href="/assets/js/19.75cda269.js"><link rel="prefetch" href="/assets/js/20.862df3f1.js"><link rel="prefetch" href="/assets/js/21.754065eb.js"><link rel="prefetch" href="/assets/js/22.4ac4222e.js"><link rel="prefetch" href="/assets/js/23.b1aab753.js"><link rel="prefetch" href="/assets/js/25.865168f6.js"><link rel="prefetch" href="/assets/js/26.374bfea5.js"><link rel="prefetch" href="/assets/js/27.63eac717.js"><link rel="prefetch" href="/assets/js/28.f4177d32.js"><link rel="prefetch" href="/assets/js/29.09b84bf2.js"><link rel="prefetch" href="/assets/js/30.a3f2a69f.js"><link rel="prefetch" href="/assets/js/31.56d7320c.js"><link rel="prefetch" href="/assets/js/32.5d3f9983.js"><link rel="prefetch" href="/assets/js/33.fadc256b.js"><link rel="prefetch" href="/assets/js/34.cde44cfb.js"><link rel="prefetch" href="/assets/js/35.91d78006.js"><link rel="prefetch" href="/assets/js/36.7616a989.js"><link rel="prefetch" href="/assets/js/37.00e71d61.js"><link rel="prefetch" href="/assets/js/38.46708d90.js"><link rel="prefetch" href="/assets/js/39.7a61ebd4.js"><link rel="prefetch" href="/assets/js/4.9b463245.js"><link rel="prefetch" href="/assets/js/5.a992bc93.js"><link rel="prefetch" href="/assets/js/6.9a8da035.js"><link rel="prefetch" href="/assets/js/7.51e20a3e.js"><link rel="prefetch" href="/assets/js/8.4f1d061f.js"><link rel="prefetch" href="/assets/js/9.52cc835d.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.82ef3fbf.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div><div class="theme-container" data-v-319dd33c><div data-v-319dd33c><div id="loader-wrapper" class="loading-wrapper" data-v-4b73742e data-v-319dd33c data-v-319dd33c><div class="loader-main" data-v-4b73742e><div data-v-4b73742e></div><div data-v-4b73742e></div><div data-v-4b73742e></div><div data-v-4b73742e></div></div> <!----> <!----></div> <div class="password-shadow password-wrapper-out" style="display:none;" data-v-1e2a0cc0 data-v-319dd33c data-v-319dd33c><h3 class="title" style="display:none;" data-v-1e2a0cc0 data-v-1e2a0cc0>I Love Zsn</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-1e2a0cc0 data-v-1e2a0cc0><input type="password" value="" data-v-1e2a0cc0> <span data-v-1e2a0cc0>Konck! Knock!</span> <button data-v-1e2a0cc0>OK</button></label> <div class="footer" style="display:none;" data-v-1e2a0cc0 data-v-1e2a0cc0><span data-v-1e2a0cc0><i class="iconfont reco-theme" data-v-1e2a0cc0></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-1e2a0cc0>vuePress-theme-reco</a></span> <span data-v-1e2a0cc0><i class="iconfont reco-copyright" data-v-1e2a0cc0></i> <a data-v-1e2a0cc0><span data-v-1e2a0cc0>侯春宇</span>
+            
+          <span data-v-1e2a0cc0>2017 - </span>
+          2020
+        </a></span></div></div> <div class="hide" data-v-319dd33c><header class="navbar" data-v-319dd33c><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="I Love Zsn" class="logo"> <span class="site-name">I Love Zsn</span></a> <div class="links"><div class="color-picker"><a class="color-button"><i class="iconfont reco-color"></i></a> <div class="color-picker-menu" style="display:none;"><div class="mode-options"><h4 class="title">Choose mode</h4> <ul class="color-mode-options"><li class="dark">dark</li><li class="auto active">auto</li><li class="light">light</li></ul></div></div></div> <div class="search-box"><i class="iconfont reco-search"></i> <input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/后端/" class="nav-link"><i class="iconfont undefined"></i>
+  后端
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li><li class="dropdown-item"><!----> <a href="/categories/前端/" class="nav-link"><i class="iconfont undefined"></i>
+  前端
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时光鸡
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      嘀嘀
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="http://www.ilovezsn.com/love.html" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-coding"></i>
+  爱你
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask" data-v-319dd33c></div> <aside class="sidebar" data-v-319dd33c><div class="personal-info-wrapper" data-v-6c8ffc9c><img src="/avatar.png" alt="author-avatar" class="personal-img" data-v-6c8ffc9c> <h3 class="name" data-v-6c8ffc9c>
+    侯春宇
+  </h3> <div class="num" data-v-6c8ffc9c><div data-v-6c8ffc9c><h3 data-v-6c8ffc9c>28</h3> <h6 data-v-6c8ffc9c>文章</h6></div> <div data-v-6c8ffc9c><h3 data-v-6c8ffc9c>13</h3> <h6 data-v-6c8ffc9c>标签</h6></div></div> <hr data-v-6c8ffc9c></div> <nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link"><i class="iconfont reco-home"></i>
+  主页
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-category"></i>
+      分类
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/categories/后端/" class="nav-link"><i class="iconfont undefined"></i>
+  后端
+</a></li><li class="dropdown-item"><!----> <a href="/categories/随笔/" class="nav-link"><i class="iconfont undefined"></i>
+  随笔
+</a></li><li class="dropdown-item"><!----> <a href="/categories/前端/" class="nav-link"><i class="iconfont undefined"></i>
+  前端
+</a></li></ul></div></div><div class="nav-item"><a href="/tag/" class="nav-link"><i class="iconfont reco-tag"></i>
+  标签
+</a></div><div class="nav-item"><a href="/timeline/" class="nav-link"><i class="iconfont reco-date"></i>
+  时光鸡
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><a class="dropdown-title"><span class="title"><i class="iconfont reco-message"></i>
+      嘀嘀
+    </span> <span class="arrow right"></span></a> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="http://www.ilovezsn.com/love.html" target="_blank" rel="noopener noreferrer" class="nav-link external"><i class="iconfont reco-coding"></i>
+  爱你
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>axios的使用</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/views/front-end/VueElementAdmin/api.html#request-js" class="sidebar-link">request.js</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/views/front-end/VueElementAdmin/api.html#编辑请求" class="sidebar-link">编辑请求</a><ul class="sidebar-sub-headers"></ul></li><li><a href="/views/front-end/VueElementAdmin/api.html#组件引用" class="sidebar-link">组件引用</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <div class="password-shadow password-wrapper-in" style="display:none;" data-v-1e2a0cc0 data-v-319dd33c><h3 class="title" style="display:none;" data-v-1e2a0cc0 data-v-1e2a0cc0>axios的使用</h3> <!----> <label id="box" class="inputBox" style="display:none;" data-v-1e2a0cc0 data-v-1e2a0cc0><input type="password" value="" data-v-1e2a0cc0> <span data-v-1e2a0cc0>Konck! Knock!</span> <button data-v-1e2a0cc0>OK</button></label> <div class="footer" style="display:none;" data-v-1e2a0cc0 data-v-1e2a0cc0><span data-v-1e2a0cc0><i class="iconfont reco-theme" data-v-1e2a0cc0></i> <a target="blank" href="https://vuepress-theme-reco.recoluan.com" data-v-1e2a0cc0>vuePress-theme-reco</a></span> <span data-v-1e2a0cc0><i class="iconfont reco-copyright" data-v-1e2a0cc0></i> <a data-v-1e2a0cc0><span data-v-1e2a0cc0>侯春宇</span>
+            
+          <span data-v-1e2a0cc0>2017 - </span>
+          2020
+        </a></span></div></div> <div data-v-319dd33c><main class="page"><div class="page-title" style="display:none;"><h1>axios的使用</h1> <hr> <div data-v-484a899e><i class="iconfont reco-account" data-v-484a899e><span data-v-484a899e>侯春宇</span></i> <i class="iconfont reco-date" data-v-484a899e><span data-v-484a899e>2020-03-18 11:45:11</span></i> <i class="iconfont reco-eye" data-v-484a899e><span id="/views/front-end/VueElementAdmin/api.html" data-flag-title="Your Article Title" class="leancloud-visitors" data-v-484a899e><a class="leancloud-visitors-count" style="font-size:.9rem;font-weight:normal;color:#999;"></a></span></i> <i class="iconfont reco-tag tags" data-v-484a899e><span class="tag-item" data-v-484a899e>
+      Vue
+    </span></i></div></div> <div class="theme-reco-content content__default" style="display:none;"><h2 id="request-js"><a href="#request-js" class="header-anchor">#</a> request.js</h2> <p>通过封装<a href="https://github.com/axios/axios" target="_blank" rel="noopener noreferrer">axios<svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a>，统一请求、响应、异常，和服务端进行交互
+<br></p> <div class="custom-block tip"><p>详见<a href="/views/front-end/frontTemplate/essentials/server.html">和服务端进行交互</a></p></div> <p>请求超时时间：30000ms</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> service <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+  baseURL<span class="token operator">:</span> process<span class="token punctuation">.</span>env<span class="token punctuation">.</span><span class="token constant">VUE_APP_BASE_API</span><span class="token punctuation">,</span> <span class="token comment">// url = base url + request url</span>
+  <span class="token comment">// withCredentials: true, // send cookies when cross-domain requests</span>
+  timeout<span class="token operator">:</span> <span class="token number">30000</span> <span class="token comment">// request timeout</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br></div></div><p>每次请求先校验是否含有token，没有禁止访问</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token comment">// request interceptor</span>
+service<span class="token punctuation">.</span>interceptors<span class="token punctuation">.</span>request<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>
+  <span class="token parameter">config</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// do something before request is sent</span>
+
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>store<span class="token punctuation">.</span>getters<span class="token punctuation">.</span>token<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token comment">// let each request carry token</span>
+      <span class="token comment">// ['X-Token'] is a custom headers key</span>
+      <span class="token comment">// please modify it according to the actual situation</span>
+      config<span class="token punctuation">.</span>headers<span class="token punctuation">[</span><span class="token string">'X-Token'</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token function">getToken</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> config
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token parameter">error</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment">// do something with request error</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span> <span class="token comment">// for debug</span>
+    <span class="token keyword">return</span> Promise<span class="token punctuation">.</span><span class="token function">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br></div></div><div class="custom-block tip"><p>以上代码位于<code>src/utils/request.js</code></p></div> <h2 id="编辑请求"><a href="#编辑请求" class="header-anchor">#</a> 编辑请求</h2> <p>具体的请求需要引用<code>request.js</code></p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">方法名</span><span class="token punctuation">(</span><span class="token parameter">参数</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    url<span class="token operator">:</span> <span class="token string">'请求地址'</span><span class="token punctuation">,</span>
+    method<span class="token operator">:</span> <span class="token string">'请求方法：get/post'</span>
+    params<span class="token operator">:</span> <span class="token punctuation">{</span> id <span class="token punctuation">}</span> 或 datas<span class="token operator">:</span> id
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><div class="custom-block tip"><p class="custom-block-title">说明</p> <p>方法名：在组件中引用<br>
+url: 请求后端的地址<br>
+method: 请求方法，get或post方法<br>
+参数分为两种: <br>
+prams: { id }  实际为: id=实参id<br>
+datas: id   实际为json形式: { id }</p></div> <p>例子1：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">physicalDeleteProd</span><span class="token punctuation">(</span><span class="token parameter">id</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    url<span class="token operator">:</span> <span class="token string">'/prod/physicalDelete'</span><span class="token punctuation">,</span>
+    method<span class="token operator">:</span> <span class="token string">'post'</span><span class="token punctuation">,</span>
+    params<span class="token operator">:</span> <span class="token punctuation">{</span> id <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><p>例子2：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token parameter">form</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">return</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    url<span class="token operator">:</span> <span class="token string">'/prod/next'</span><span class="token punctuation">,</span>
+    method<span class="token operator">:</span> <span class="token string">'post'</span><span class="token punctuation">,</span>
+    data<span class="token operator">:</span> form
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h2 id="组件引用"><a href="#组件引用" class="header-anchor">#</a> 组件引用</h2> <p>通过import导入</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> method <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/api/xxx'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>例子：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">import</span> <span class="token punctuation">{</span> publishInterface<span class="token punctuation">,</span> copyInterface <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'@/api/platform/interface'</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><div class="custom-block tip"><p><code>@</code>为设置的相对路径，相当于<code>src</code></p></div> <p>绑定方法调用，接收响应，例如：</p> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token function">handlerPublished</span><span class="token punctuation">(</span><span class="token parameter">row</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+      <span class="token function">publishInterface</span><span class="token punctuation">(</span>row<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span><span class="token parameter">response</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+        row<span class="token punctuation">.</span>status <span class="token operator">=</span> <span class="token number">2</span>
+        row<span class="token punctuation">.</span>statusName <span class="token operator">=</span> <span class="token string">'已发布'</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">$message</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+          message<span class="token operator">:</span> response<span class="token punctuation">.</span>msg<span class="token punctuation">,</span>
+          type<span class="token operator">:</span> <span class="token string">'success'</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">handleFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+      <span class="token punctuation">}</span><span class="token punctuation">)</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br></div></div></div> <footer class="page-edit" style="display:none;"><!----> <div class="last-updated"><span class="prefix">Last Updated: </span> <span class="time">4/14/2020, 12:59:10 PM</span></div></footer> <!----></main> <!----> <div style="display:none;" data-v-319dd33c data-v-319dd33c><div class="comments-wrapper" data-v-319dd33c><div class="valine-wrapper"><div id="valine"></div></div></div></div></div></div></div></div></div><div class="global-ui"><canvas id="vuepress-canvas-ribbon"></canvas><div id="goTop" class="hide-cat" data-v-3cd57a9e></div><canvas id="vuepress-canvas-cursor"></canvas><div></div></div></div>
+    <script src="/assets/js/app.f459944a.js" defer></script><script src="/assets/js/3.8bbe5d20.js" defer></script><script src="/assets/js/1.db0d4554.js" defer></script><script src="/assets/js/24.9c78b38e.js" defer></script>
+  </body>
+</html>
