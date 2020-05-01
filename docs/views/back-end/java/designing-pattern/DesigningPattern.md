@@ -1100,13 +1100,297 @@ public class InnerClassSingleton {
 
 #### 反射攻击
 
+通过反射获取类的私有构造方法，使用setAccessible启用访问安全检查的开关，通过构造方法创建出新的"单例对象"
+```java
+ /**
+ * 暴力反射 破坏单例
+ * @throws Exception
+ */
+@Test
+public void testReflect() throws Exception {
+    // 获取单例对象
+    HungrySingleton instance = HungrySingleton.getInstance();
+    System.out.println(instance);
 
+    // 通过反射 暴力创建一个对象
+    Constructor<HungrySingleton> constructor = HungrySingleton.class.getDeclaredConstructor();
+    constructor.setAccessible(true);
+    HungrySingleton hungrySingleton = constructor.newInstance();
+
+    System.out.println(hungrySingleton);
+}
+```
+
+解决方案：在构造方法里边添加判断逻辑，如果已经实例化过的对象，再次调用构造方法，抛出异常
+```java
+package singleton.hungry_singleton;
+
+/**
+ * @ClassName HungrySingleton
+ * @Description 饿汉式单例
+ * @Author hou
+ * @Date 2020/4/20 12:49 下午
+ * @Version 1.0
+ **/
+public class HungrySingleton2 {
+
+    private static HungrySingleton2 INSTANCE = new HungrySingleton2();
+
+    // 构造方法私有化
+    private HungrySingleton2() {
+        if(null != INSTANCE){
+            throw new RuntimeException("单例对象已经存在，不允许再次调用构造方法");
+        }
+    }
+
+    // 提供全局访问点
+    public static HungrySingleton2 getInstance(){
+        return INSTANCE;
+    }
+}
+
+```
+
+测试结果如下：
+![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ge0j7hyvozj31c00u0dw2.jpg)
 
 #### 序列化攻击
 
-## 原型模式
+:::warning    
+假设我还要搞破坏呢？    
+:::
 
-### 深克隆与浅克隆
+复制一个饿汉式单例，并实现序列化接口
+```java
+package singleton.hungry_singleton;
+
+import java.io.Serializable;
+
+/**
+ * @ClassName HungrySingleton3
+ * @Description 饿汉式单例
+ * @Author hou
+ * @Date 2020/4/20 12:49 下午
+ * @Version 1.0
+ **/
+public class HungrySingleton3 implements Serializable {
+
+    private static HungrySingleton3 INSTANCE = new HungrySingleton3();
+
+    // 构造方法私有化
+    private HungrySingleton3() {
+    }
+
+    // 提供全局访问点
+    public static HungrySingleton3 getInstance(){
+        return INSTANCE;
+    }
+}
+
+```
+
+通过序列化后反序列化生成新的对象，测试结果如下：
+![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ge0jkui96vj31c00u0toa.jpg)
+
+解决方案：
+1. 不实现序列化接口
+2. 在单例类中添加`readResolve()`方法，反序列化时，如果定义了readResolve()则直接返回此方法指定的对象。而不需要单独再创建新对象
+```java
+private Object readResolve(){
+    return INSTANCE;
+}
+```
+
+再次执行测试代码，测试结果如下：
+![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ge0k6nck9cj31c00u0dvl.jpg)
+
+相关代码
+![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ge0k9iw5uwj31c00u04dy.jpg)
+![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ge0k9w2m9xj31c00u04hk.jpg)
+![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ge0kakfer1j31c00u04gl.jpg)
+![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ge0kc327gdj31c00u0wwj.jpg)
+![](https://tva1.sinaimg.cn/large/007S8ZIlgy1ge0kcjxx26j31c00u0ask.jpg)
+
+## 原型模式 <Badge text='创建型' />
+原型模式（Prototype）：用原型实例指定创建对象的种类，并且通过拷贝这些原型创建新的对象。
+
+### 示例
+
+:::tip 
+《西游记》中孙悟空可以"拔一根毫毛，吹出猴万个"，原型模式就以此举例
+:::
+
+定义一个接口。包含一个`clone`方法
+```java
+package prototype;
+
+/**
+ * @InterfaceName IPrototype
+ * @Description 原型模式接口
+ * @Author hou
+ * @Date 2020/4/21 10:16 下午
+ * @Version 1.0
+ **/
+public interface IPrototype<T> {
+     T clone();
+}
+```
+
+新建`金箍棒`类
+```java
+package prototype;
+
+import lombok.Data;
+
+/**
+ * @ClassName Weapon
+ * @Description 武器
+ * @Author hou
+ * @Date 2020/4/21 5:25 下午
+ * @Version 1.0
+ **/
+@Data
+public class Weapon {
+
+    private String name = "如意金箍棒，一万三千五百斤";
+
+}
+```
+
+新建`孙悟空`类，有一个武器`金箍棒`，实现`IPrototype`接口
+```java
+package prototype;
+
+import lombok.Data;
+
+/**
+ * @ClassName SunWuKong
+ * @Description 孙悟空
+ * @Author hou
+ * @Date 2020/4/21 5:24 下午
+ * @Version 1.0
+ **/
+@Data
+public class SunWuKong implements IPrototype<SunWuKong>{
+
+    private String type = "石猴";
+    private String gender = "公";
+    private Weapon jinGuBang = new Weapon();
+
+    @Override
+    public SunWuKong clone() {
+        SunWuKong sunWuKong = new SunWuKong();
+        sunWuKong.setGender(this.gender);
+        sunWuKong.setType(this.type);
+        sunWuKong.setJinGuBang(this.jinGuBang);
+        return sunWuKong;
+    }
+}
+```
+
+编写测试代码，测试结果如下：
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1ge1r45st59j31c00u0k7j.jpg)
+
+从结果可见，除了复制的本体不一样，里边包含的属性均相同，包括`金箍棒`，可是复制出来的"猴子"不应该拥有相同的金箍棒
+这种情况被称为`浅克隆`
+
+#### 浅克隆
+浅克隆，用来创建一个新的对象，然后将当前对象的非静态字段复制到新对象，如果该字段是值类型的，则对该字段执行逐位复制，如果该字段是引用类型的，则复制引用但不复制引用的对象。
+
+所有类的父类`Object`中也包含了一个`浅克隆`的实现
+
+编写代码
+```java
+package prototype;
+
+import lombok.Data;
+
+/**
+ * @ClassName SunWuKong
+ * @Description 孙悟空
+ * @Author hou
+ * @Date 2020/4/21 5:24 下午
+ * @Version 1.0
+ **/
+@Data
+public class SunWuKong2 implements Cloneable{
+
+    private String type = "石猴";
+    private String gender = "公";
+    private Weapon jinGuBang = new Weapon();
+
+    @Override
+    public SunWuKong2 clone() throws CloneNotSupportedException {
+        return (SunWuKong2) super.clone();
+    }
+}
+```
+测试结果如下：
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1ge1rk97f3uj31c00u0wv2.jpg)
+
+:::tip 提示    
+Cloneable接口中并没有实质性的方法，仅仅是一个标记作用；如果直接重写了clone方法，但是没有实现接口的话会抛出`CloneNotSupportedException`异常。    
+`clone`方法在`Object`中是`protected`的，可以在子类中进行扩大可见范围。    
+:::
+
+
+### 深克隆
+要想让每一个分身都有一根"金箍棒"就要用到深克隆    
+深克隆：用来创建一个新的对象，都含有与原来对象相同的值，除了那些引用其他对象的变量。那些引用其他对象的变量将指向一个被复制的新对象，而不再是原有那些被引用对象。即深克隆把要复制的对象所引用的对象也都复制了一次，而这种对被引用到的对象克隆叫做间接克隆。
+
+重新定义一个`孙悟空`类，通过序列化反序列化克隆一个新的`孙悟空`
+```java
+package prototype;
+
+import lombok.Data;
+
+import java.io.*;
+
+/**
+ * @ClassName SunWuKong
+ * @Description 孙悟空
+ * @Author hou
+ * @Date 2020/4/21 5:24 下午
+ * @Version 1.0
+ **/
+@Data
+public class SunWuKong3 implements Cloneable, Serializable {
+
+    private String type = "石猴";
+    private String gender = "公";
+    private Weapon jinGuBang = new Weapon();
+
+    @Override
+    public SunWuKong3 clone() throws CloneNotSupportedException {
+        return (SunWuKong3) super.clone();
+    }
+
+    public SunWuKong3 deepClone() throws IOException, ClassNotFoundException {
+        // 写出
+        ByteArrayOutputStream bos = new ByteArrayOutputStream();
+        ObjectOutputStream oos = new ObjectOutputStream(bos);
+        oos.writeObject(this);
+
+        // 读入
+        ObjectInputStream ois = new ObjectInputStream(new ByteArrayInputStream(bos.toByteArray()));
+        
+        return (SunWuKong3)ois.readObject();
+    }
+}
+```
+
+测试结果如下：
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1ge1s7s11cjj31c00u018y.jpg)
+
+:::tip    
+此时的武器应该实现序列化接口    
+:::
+
+#### 优点
+可以方便的创建一个对象
+
+#### 缺点
+使用深克隆浅克隆需要考虑性能的问题，在大量的深克隆中效率不高
 
 ## 代理模式
 
@@ -1116,15 +1400,167 @@ public class InnerClassSingleton {
 ### jdk
 ### cglib
 
-## 委派模式
 ## 策略模式 
 ## 模板模式
 ## 适配器模式
 ## 装饰者模式
 ## 观察者模式
-## 门面模式
-## 享元模式 
+观察者模式又叫发布-订阅模式（Publish/Subsctibe），定义了一种一对多的依赖关系，让多个观察者对象同时监听某一个主题对象。这个主题对象在状态发生变化时，会通知所有观察者对象，使它们能够自己更新自己。
+
+
+
+## 享元模式 <Badge text='结构型' />
+享元模式（Flyweight Pattern）：运用共享技术有效地支持大量细粒度的对象。用于减少创建对象的数量，以减少内存占用和提高性能。
+在软件开发过程中，如果有使用大量相同的对象，只要共享一个就可以，这就是享元模式，减少了不必要的内存消耗。
+
+享元模式由以下部分组成:
+
+抽象享元类（Flyweight）: 所有具体享元类的超类或者接口，通过这个接口，Flyweight可以接受并作用于外部。    
+具体享元类（ConcreteFlyweight）：指定内部状态，为内部状态增加存储空间。    
+享元工厂类（FlyweightFactory）：用来创建并管理Flyweight对象，它主要用来确保合理地共享Flyweight，当用户请求一个Flyweight时，FlyweightFactory就会提供一个已经创建的Flyweight对象或者新建一个（如果不存在）。
+
+### 示例
+
+:::tip
+唐僧西天取经期间收徒`孙悟空` `猪悟能` `沙悟净` `白龙马`，取经过程中`孙悟空`总是被唐僧驱逐，模拟此过程
+:::
+
+定义`徒弟接口`（抽象享元接口）
+```java
+package flyweight;
+
+/**
+ * @InterfaceName IApprentice
+ * @Description 徒弟接口
+ * @Author hou
+ * @Date 2020/4/22 12:13 上午
+ * @Version 1.0
+ **/
+public interface IApprentice {
+}
+
+```
+
+定义三个徒弟类(具体享元类)`孙悟空` `猪悟能` `沙悟净`
+```java
+package flyweight;
+
+/**
+ * @ClassName SuWukong
+ * @Description 孙悟空
+ * @Author hou
+ * @Date 2020/4/22 12:10 上午
+ * @Version 1.0
+ **/
+public class SunWuKong implements IApprentice{
+    @Override
+    public String toString() {
+        return "神通广大的孙悟空";
+    }
+}
+``` 
+
+```java
+package flyweight;
+
+/**
+ * @ClassName ZhuBaJie
+ * @Description 猪八戒
+ * @Author hou
+ * @Date 2020/4/22 12:10 上午
+ * @Version 1.0
+ **/
+public class ZhuBaJie implements IApprentice{
+    @Override
+    public String toString() {
+        return "好吃懒做的猪悟能";
+    }
+}
+``` 
+
+```java
+package flyweight;
+
+/**
+ * @ClassName ShaWuJing
+ * @Description 沙悟净
+ * @Author hou
+ * @Date 2020/4/22 12:10 上午
+ * @Version 1.0
+ **/
+public class ShaWuJing implements IApprentice{
+    @Override
+    public String toString() {
+        return "憨厚老实的沙悟净";
+    }
+}
+``` 
+
+创建一个徒弟工厂（简单工厂）
+```java
+package flyweight;
+
+/**
+ * @ClassName ApprenticeFactory
+ * @Description TODO
+ * @Author hou
+ * @Date 2020/4/22 12:25 上午
+ * @Version 1.0
+ **/
+public class ApprenticeFactory {
+    public static IApprentice apprentice(String name){
+        if("孙悟空".equals(name)){
+            return new SunWuKong();
+        } else if("猪悟能".equals(name)){
+            return new ZhuBaJie();
+        } else if("沙悟净".equals(name)){
+            return new ShaWuJing();
+        }
+        return null;
+    }
+}
+```
+
+定义西游记类（享元工厂类）
+```java
+package flyweight;
+
+import java.util.HashMap;
+import java.util.Map;
+
+/**
+ * @ClassName Journey2TheWest
+ * @Description TODO
+ * @Author hou
+ * @Date 2020/4/22 12:22 上午
+ * @Version 1.0
+ **/
+public class Journey2TheWest {
+
+    // 保存对象
+    private Map<String, IApprentice> cacheFactory = new HashMap<>();
+
+    // 如果缓存没有对象，此处就存起来；如果缓存有对象，此处就不进行处理
+    public void apprentice(String name){
+        cacheFactory.putIfAbsent(name, ApprenticeFactory.apprentice(name));
+    }
+    
+    public void print(){
+        cacheFactory.forEach((k, v) -> System.out.println(String.format("name: %s, desc: %s", k, v)));
+    }
+}
+```
+
+编写测试代码，结果如下：
+![](https://tva1.sinaimg.cn/large/007S8ZIlly1ge1v2wepp8j31c00u0k89.jpg)
+
+### 优点
+享元模式的优点在于它能够极大的减少系统中对象的个数。    
+享元模式由于使用了外部状态，外部状态相对独立，不会影响到内部状态，所以享元模式使得享元对象能够在不同的环境被共享。
+
+
  
 ## 参考链接
-[关于三种工厂模式的总结](https://www.jianshu.com/p/70f7fd47f2e2)
-[单例模式（Singleton）的同步锁synchronized](https://www.cnblogs.com/qq895139140/p/7774152.html)
+[关于三种工厂模式的总结](https://www.jianshu.com/p/70f7fd47f2e2)    
+[单例模式（Singleton）的同步锁synchronized](https://www.cnblogs.com/qq895139140/p/7774152.html)    
+[设计模式（Design Pattern）](https://blog.csdn.net/u012482647/article/details/78562486)    

@@ -119,14 +119,6 @@ module.exports = {
     "lineNumbers": true
   },
   plugins: [
-    [
-      "ribbon",
-      {
-        size: 90,     // width of the ribbon, default: 90
-        opacity: 0.8, // opacity of the ribbon, default: 0.3
-        zIndex: -1    // z-index property of the background, default: -1
-      },
-    ],
     ['go-top'],
     [
       "cursor-effects",
@@ -134,16 +126,7 @@ module.exports = {
         shape: ['star'],  // shape of the particle, default: 'star'
       }
     ],
-    [
-      "dynamic-title",
-      {
-        showIcon: "/favicon.ico",
-        showText: "(/≧▽≦/)咦！又好了！",
-        hideIcon: "/failure.ico",
-        hideText: "(●—●)喔哟，崩溃啦！",
-        recoverTime: 2000
-      }
-    ],
+
     // 禁用无用插件
     ["@vuepress-reco/back-to-top", false],
     // ["@vuepress-reco/extract-code", false],
